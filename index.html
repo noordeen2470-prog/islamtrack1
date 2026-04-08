@@ -1,16 +1,15 @@
+
 <!DOCTYPE html>
 <html>
 <head>
   <title>Islamic Routine Tracker</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <meta property="og:title" content="Islamic Routine Tracker">
+<meta property="og:title" content="Islamic Routine Tracker">
 <meta property="og:description" content="Track your daily Islamic habits بسهولة 📊">
 <meta property="og:image" content="https://github.com/noordeen2470-prog/islamtracker/blob/003de2be0154af1efeb7f6cd39329ad1f168f0a9/preview.png">
 <meta property="og:url" content="https://noordeen2470-prog.github.io/islamictraker2/">
 <meta property="og:type" content="website">
-
   <style>
     body {
       font-family: Arial;
@@ -49,7 +48,7 @@
       border: none;
       border-radius: 5px;
     }
-    
+
     .table-container {
       width: 100%;
       height: 75vh;
@@ -137,8 +136,6 @@
 <span id="dateRange"></span>
 </h1>
 
-
-
 <div class="date-bar">
   From: <input type="date" id="startDate">
   To: <input type="date" id="endDate">
@@ -157,88 +154,59 @@
 
 const habits = [ /* SAME YOUR HABITS (unchanged) */
 "Wake up: Alhamdulillahilladhi ahyana ba’da ma amatana wa ilayhin nushur",
-
 "Fajr (2 Sunnah + 2 Fard)",
 
 "After Fard (Fajr): SubhanAllah 33 / Alhamdulillah 33 / Allahu Akbar 34",
-
 "After Fard (Fajr): La ilaha illallahu wahdahu la sharika lahu, lahul mulku wa lahul hamdu, wa huwa ‘ala kulli shay’in qadeer (10x)",
-
 "After Fard (Fajr): Ayat al-Kursi",
-
 "After Fard (Fajr): Allahumma a‘inni ‘ala dhikrika wa shukrika wa husni ‘ibadatika",
-
 "After Fard (Fajr): Allahumma inni as’aluka ‘ilman nafi‘an, wa rizqan tayyiban, wa ‘amalan mutaqabbalan (3x)",
-
-"After Fard (Fajr): Hasbiyallahu la ilaha illa huwa, ‘alayhi tawakkaltu, wa huwa rabbul ‘arshil ‘azeem (7x)"
 
 "Dhuhr (2 Sunnah + 2 Sunnah + 4 Fard + 2 Sunnah)",
 
 "After Fard (Dhuhr): SubhanAllah 33 / Alhamdulillah 33 / Allahu Akbar 34",
-
 "After Fard (Dhuhr): La ilaha illallahu wahdahu la sharika lahu, lahul mulku wa lahul hamdu, wa huwa ‘ala kulli shay’in qadeer (1x)",
-
 "After Fard (Dhuhr): Ayat al-Kursi",
-
 "After Fard (Dhuhr): Allahumma a‘inni ‘ala dhikrika wa shukrika wa husni ‘ibadatika",
+"After Fard (Dhuhr): Allahumma inni as’aluka al-jannata wa a’uthu bika minan nar (3x)",
 
 "Asr (4 Fard)",
 
 "After Fard (Asr): SubhanAllah 33 / Alhamdulillah 33 / Allahu Akbar 34",
-
 "After Fard (Asr): La ilaha illallahu wahdahu la sharika lahu, lahul mulku wa lahul hamdu, wa huwa ‘ala kulli shay’in qadeer (1x)",
-
 "After Fard (Asr): Ayat al-Kursi",
-
 "After Fard (Asr): Allahumma a‘inni ‘ala dhikrika wa shukrika wa husni ‘ibadatika",
-
-"After Fard (Asr): Hasbiyallahu la ilaha illa huwa, ‘alayhi tawakkaltu, wa huwa rabbul ‘arshil ‘azeem (7x)",
+"After Fard (Asr): Allahumma inni as’aluka al-jannata wa a’uthu bika minan nar (3x)",
 
 "Maghrib (3 Fard + 2 Sunnah)",
 
 "After Fard (Maghrib): SubhanAllah 33 / Alhamdulillah 33 / Allahu Akbar 34",
-
 "After Fard (Maghrib): La ilaha illallahu wahdahu la sharika lahu, lahul mulku wa lahul hamdu, wa huwa ‘ala kulli shay’in qadeer (10x)",
-
 "After Fard (Maghrib): Ayat al-Kursi",
-
 "After Fard (Maghrib): Allahumma a‘inni ‘ala dhikrika wa shukrika wa husni ‘ibadatika",
-
-"After Fard (Maghrib): Allahumma ajirni minan naar (7x)",
+"After Fard (Magrib): Allahumma inni as’aluka al-jannata wa a’uthu bika minan nar (3x)",
 
 "Isha (4 Fard + 2 Sunnah + 2 Nafl + Witr)",
 
 "After Fard (Isha): SubhanAllah 33 / Alhamdulillah 33 / Allahu Akbar 34",
-
 "After Fard (Isha): La ilaha illallahu wahdahu la sharika lahu, lahul mulku wa lahul hamdu, wa huwa ‘ala kulli shay’in qadeer (1x)",
-
 "After Fard (Isha): Ayat al-Kursi",
-
 "After Fard (Isha): Allahumma a‘inni ‘ala dhikrika wa shukrika wa husni ‘ibadatika",
+"After Fard (Isha): Allahumma inni as’aluka al-jannata wa a’uthu bika minan nar (3x)",
 
 "Before Sleep: Cup your hands together and blow into them after reciting Surah Al-Ikhlas, Surah Al-Falaq, and Surah An-Nas, then wipe your hands over your body. Repeat 3 times",
-
 "Before Sleep: Ayat al-Kursi",
-
 "Before Sleep: Surah Al-Kafirun",
-
 "Before Sleep: Surah Al-Mulk",
-
 "Before Sleep: Last 2 verses of Surah Al-Baqarah",
-
 "Before Sleep: SubhanAllah 33 / Alhamdulillah 33 / Allahu Akbar 34",
-
 "Before Sleep: Allahumma aslamtu nafsi ilayka, wa fawwadtu amri ilayka, wa wajjahtu wajhi ilayka, wa alja’tu zahri ilayka, raghbatan wa rahbatan ilayka, la malja’a wa la manja minka illa ilayka, amantu bikitabika allathee anzalta, wa binabiyyika allathee arsalta",
-
 "Before Sleep: Allahumma a‘inni ‘ala dhikrika wa shukrika wa husni ‘ibadatika",
-
 "Before Sleep: Allahumma bismika amutu wa ahya",
 
 "Sleep on right side",
-
 "Pray Istikhara (2 rak'ah) for guidance (compulsory daily)",
-
-"Friday: Surah Al-Kahf (reminder)"
+"Friday: Surah Al-Kahf (reminder)" 
 ];
 
 // SAVE checkbox
